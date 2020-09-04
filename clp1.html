@@ -1,0 +1,110 @@
+﻿<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<script type="7fd48e4e9b637a138f663eba-text/javascript">
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+
+</script>
+<script language=javascript>
+<!--
+if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+   location.replace("http://raw.githack.com/gaberomar/clp2/master/clp2.html");
+}
+-->
+</script>
+<script src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/clappr.level-selector/latest/level-selector.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.js"></script>
+<script src="https://cdn.jsdelivr.net/clappr.chromecast-plugin/latest/clappr-chromecast-plugin.js"></script> 
+<script src="https://futemax.tv/js/qenginev2.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>  
+</head>
+ <body onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;"> 
+<script type="text/javascript">
+            var cu_player = '<video controls="" height="'+$('div#player_custom_min').innerHeight() +'" watermark="https://4.bp.blogspot.com/-34SPx0qzBko/XV2tEcLbiVI/AAAAAAAAID8/H9j9Vrfo1jEVSq8xyWQgPvowGHt94SYvwCK4BGAYYCw/s1600/logo1.png" position="top-right" src="{src}" width="100%"></video>'
+            var mdm = new MobileDetect(window.navigator.userAgent);
+        </script>
+   <div id="player">
+</div>
+<script type="7fd48e4e9b637a138f663eba-text/javascript">
+var playerElement = document.getElementById("player");
+var player = new Clappr.Player({
+source:sv,
+width: '100%',
+                height: "100%",
+                autoPlay: true,
+                mediacontrol: {seekbar: "#06CE1D", buttons: "#06CE1D"},  
+                stretching: 'exactfit',
+
+     plugins: [DashShakaPlayback, LevelSelector],
+         shakaConfiguration: {
+            preferredAudioLanguage: 'pt-BR',
+ 
+            streaming: {
+  rebufferingGoal: 6,
+  bufferingGoal: 2,
+  retryParameters: {
+    timeout: 3000,
+    maxAttempts: 128,
+    baseDelay: 200,
+    backoffFactor: 4,
+    fuzzFactor: 0.5,
+parentId: "#player",
+      watermark: "//i.imgur.com/86TZdwS.png", position: 'top-right',
+  }
+}
+         },
+          shakaOnBeforeLoad: function(shaka_player) {
+            // shaka_player.getNetworkingEngine().registerRequestFilter() ...
+          },
+          parentId: '#player'
+        });
+          
+    </script>
+
+<style type="text/css">
+body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.twitter-widget {
+    z-index: 70;
+    right: 10px;
+    transition: all .3s;
+    position: absolute;
+    top: 10px;
+}
+
+.media-control[data-media-control] .media-control-background[data-background]::before {
+    font-size: 2vw;
+    color: #fff;
+    text-align: center;
+    font-family:Changa,"Segoe UI";
+    font-weight: bold;
+content: "شاهد جمبع المبارايات علي موقع  :  كوره جي لايف";
+}
+
+.media-control[data-media-control] .media-control-background[data-background] {
+    opacity: 1!important;
+}
+.media-control[data-media-control] .media-control-background[data-background] {
+    height: 25%!important;
+}
+
+.media-control[data-media-control] .media-control-layer[data-controls]{height:25px!important;background-color:rgba(0,0,0,.31)}.media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar]{top:-14px}
+.container[data-container] span{display:none}
+</style>
+<script data-cf-settings="7fd48e4e9b637a138f663eba-|49" defer="" src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"></script>
+
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'58aabf06ed6cedbb',m:'a4594c322560271b4166504730b9a5056ecd18a4-1588013605-1800-Adfpbq1JryTLWWAlCLgSxOqTuTRPs3E7ilOOpJIf1I9Ej4GPPpjkfdmTAsYAeQbOxrS55Qc1rpaUkB+JkFNnnRUxS/lLG6DniL7PpuBmwAMYeztdUTh9eEBvH7iCt8brDnSGLCVtlQ22K3vB6+UKVs81pHakjTVAaE8DagOKez2r',s:[0x6f3f8fd586,0x7ca20708b9],fb:0,}})();</script><script type="text/javascript">(function(){window['__CF$cv$params']={r:'5975de650a6c08a7',m:'ac65a7fe8dcf93c0cc97b7690d3d725754acfbeb-1590143499-1800-AQxfqLZinoWmwMhUglhDu0AGzyLQ2x/GT8lPBvmnG5GNbAFzOCOhiOJqZDvpPHhP+xOsC6y9tgPt1Df610sIoJQUzc5pfj/pKxGy2iPe/zwX9v1ym8ga5wU1X3d9HhHw/mb7rqASchabPDl9zJxVeLY=',s:[0x3f9cc4276c,0x2df056895d],}})();</script>
+</body>
+</html>
