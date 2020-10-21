@@ -1,16 +1,14 @@
 ﻿<!DOCTYPE html>
 <html>
 	<head>
-<script type="text/javascript">
+<script>
 function getParam ( sname )
 {
-  var params = location.search.substr(location.search.indexOf("?")+1);
-  var sval =  params.replace("sv=", "");
-  
-  return sval;
+ var params = location.search.substr(location.search.indexOf("?")+1);
+ var sval =  params.replace("sv=", "");
+ return sval;
 }
 var sv = getParam("sv");
-
 </script>
 	</head>
 	<body>
