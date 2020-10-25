@@ -1,0 +1,183 @@
+﻿<script type='text/javascript'>     
+//<![CDATA[
+
+(function(){function d(b){var a=window;if(a.addEventListener)a.addEventListener("load",b,!1);else if(a.attachEvent)a.attachEvent("onload",b);else{var c=a.onload;a.onload=function(){b.call(this);c&&c.call(this)}}}var p=Date.now||function(){return+new Date};window.pagespeed=window.pagespeed||{};var q=window.pagespeed;function r(){this.a=!0}r.prototype.c=function(b){b=parseInt(b.substring(0,b.indexOf(" ")),10);return!isNaN(b)&&b<=p()};r.prototype.hasExpired=r.prototype.c;r.prototype.b=function(b){return b.substring(b.indexOf(" ",b.indexOf(" ")+1)+1)};r.prototype.getData=r.prototype.b;r.prototype.f=function(b){var a=document.getElementsByTagName("script"),a=a[a.length-1];a.parentNode.replaceChild(b,a)};r.prototype.replaceLastScript=r.prototype.f;
+r.prototype.g=function(b){var a=window.localStorage.getItem("pagespeed_lsc_url:"+b),c=document.createElement(a?"style":"link");a&&!this.c(a)?(c.type="text/css",c.appendChild(document.createTextNode(this.b(a)))):(c.rel="stylesheet",c.href=b,this.a=!0);this.f(c)};r.prototype.inlineCss=r.prototype.g;
+r.prototype.h=function(b,a){var c=window.localStorage.getItem("pagespeed_lsc_url:"+b+" pagespeed_lsc_hash:"+a),f=document.createElement("img");c&&!this.c(c)?f.src=this.b(c):(f.src=b,this.a=!0);for(var c=2,k=arguments.length;c<k;++c){var g=arguments[c].indexOf("=");f.setAttribute(arguments[c].substring(0,g),arguments[c].substring(g+1))}this.f(f)};r.prototype.inlineImg=r.prototype.h;
+function t(b,a,c,f){a=document.getElementsByTagName(a);for(var k=0,g=a.length;k<g;++k){var e=a[k],m=e.getAttribute("data-pagespeed-lsc-hash"),h=e.getAttribute("data-pagespeed-lsc-url");if(m&&h){h="pagespeed_lsc_url:"+h;c&&(h+=" pagespeed_lsc_hash:"+m);var l=e.getAttribute("data-pagespeed-lsc-expiry"),l=l?(new Date(l)).getTime():"",e=f(e);if(!e){var n=window.localStorage.getItem(h);n&&(e=b.b(n))}e&&(window.localStorage.setItem(h,l+" "+m+" "+e),b.a=!0)}}}
+function u(b){t(b,"img",!0,function(a){return a.src});t(b,"style",!1,function(a){return a.firstChild?a.firstChild.nodeValue:null})}
+q.i=function(){if(window.localStorage){var b=new r;q.localStorageCache=b;d(function(){u(b)});d(function(){if(b.a){for(var a=[],c=[],f=0,k=p(),g=0,e=window.localStorage.length;g<e;++g){var m=window.localStorage.key(g);if(!m.indexOf("pagespeed_lsc_url:")){var h=window.localStorage.getItem(m),l=h.indexOf(" "),n=parseInt(h.substring(0,l),10);if(!isNaN(n))if(n<=k){a.push(m);continue}else if(n<f||!f)f=n;c.push(h.substring(l+1,h.indexOf(" ",l+1)))}}k="";f&&(k="; expires="+(new Date(f)).toUTCString());document.cookie=
+"_GPSLSC="+c.join("!")+k;g=0;for(e=a.length;g<e;++g)window.localStorage.removeItem(a[g]);b.a=!1}})}};q.localStorageCacheInit=q.i;})();
+pagespeed.localStorageCacheInit();
+//]]>
+</script>
+<script type="159d45a919f3559dc6c0afe3-text/javascript">
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+
+</script>
+<script type="text/javascript" data-pagespeed-no-defer>pagespeed.lazyLoadImages.overrideAttributeFunctions();</script>	
+<script type="text/javascript">
+	function addZero(i)
+	{
+		if (i < 10)
+		{
+			i = "0" + i;
+		}
+		return i;
+	}
+
+	yayinTimezone = 180;
+	saat_farki    = yayinTimezone + new Date().getTimezoneOffset();
+
+	$('.event-list span.time-left').each(function ()
+	{
+		date = new Date(new Date($(this).attr('data-time')).getTime() + (-saat_farki * 60 * 1000));
+
+		$('.time-start-' + $(this).attr('data-start')).html(date.getHours() + ':' + addZero(date.getMinutes()));
+
+		$(this).countdown(date, function (event){
+
+			if($(this).hasClass('finished')){
+				return;
+			}
+
+			if($(this).hasClass('live')){
+				return;
+			}
+
+			if(event['elapsed'] === true){
+				let li = $('.event-list li.date.live');
+				let span = li.find('span.time-left:first');
+
+				span.addClass('finished').removeClass('live').text('BİTTİ');
+				li.addClass('finished').removeClass('live');
+				$(this).removeClass('waiting').addClass('live').text('ŞUAN YAYINDA.');
+				return;
+			}
+
+			if (event['offset']['seconds']){
+				$(this).html(
+					event.strftime('%-S sn.')
+				);
+			}
+
+			if (event['offset']['minutes']){
+				$(this).html(
+					event.strftime('%-M dk. %-S sn.')
+				);
+			}
+
+			if (event['offset']['hours']){
+				$(this).html(
+					event.strftime('%-H saat %-M dk. %-S sn.')
+				);
+			}
+
+			if (event['offset']['hours'] && event['offset']['minutes'] && event['offset']['seconds']){
+				$(this).html(
+					event.strftime('%-H saat %-M dk. %-S sn.')
+				);
+			}
+
+			if (event['offset']['days']){
+				$(this).html(
+					event.strftime('%-D gün %-H saat %-M dk.')
+				);
+			}
+		});
+	});
+
+	var cursorFocus = function (elem)
+	{
+		var x = window.scrollX,
+		    y = window.scrollY;
+		elem.focus();
+		window.scrollTo(x, y);
+	};
+
+	cursorFocus($('.active-day'));
+</script>
+
+
+<div class='mainch section' id='mainch'>
+<div class='widget Blog' data-version='2' id='Blog11'>
+<div class='post-body'>
+
+<script src="https://content.jwplatform.com/libraries/lqsWlr4Z.js" type="159d45a919f3559dc6c0afe3-text/javascript"></script>
+<script type="159d45a919f3559dc6c0afe3-text/javascript">jwplayer.key = "zGu0jD1xX6q9uWYgxDJF3NkcFszeg2kYGT5low==";</script>
+
+<div id='player'></div>
+<script type="159d45a919f3559dc6c0afe3-text/javascript">
+jwplayer("player").setup({
+file: "https://video-a-lga.xx.fbcdn.net/hvideo-ash19/v/rCvO6RWzBVcyz92RogA3Y/live-dash/dash-abr-ibr-audio/107459091149607_0.mpd?_nc_rl=AfDnSGT3p469BDmw&lvp=1&oh=686d14cf456384f065893c81809b81ee&oe=5F95A497",
+				image          : "https://antensiz.tv/stream/stream-img/257x240.jpg?1603579330",
+				abouttext      : "",
+				aboutlink      : '',
+				width          : "100%",
+				height         : "100%",
+				stretching     : 'exactfit',
+				androidhls     : true,
+				hlshtml        : true,
+				primary        : "html5",
+
+				allowfullscreen: "true",
+			'gtag_event': 'Alive', 
+'event_category': 'Video',
+'event_label'   : 'A2 TV Playing',
+'value'         : 0			
+
+});
+</script>
+
+<body class='static_page'>
+<script>/*<![CDATA[*/ (localStorage.getItem('mode')) === 'rdmode' ? document.querySelector('body').classList.add('edmn') : document.querySelector('body').classList.remove('edmn') /*]]>*/</script>
+<style>
+.jw-rightclick ul{display:none;}
+.jw-background-color {
+background-color: transparent !important;
+background-image: -webkit-linear-gradient(top,rgba(255,255,255,0) 1%,rgb(45, 53, 114) 100%)!important;
+}
+.jw-button-color {
+color: hsla(203, 100%, 50%, 1) !important;
+}
+.jwplayer.jw-state-playing .jw-display-icon-container{
+background: none !important;
+}	
+</style>
+<style>/*<![CDATA[*/
+body{background:#000;font-family:sans-serif;margin:0}
+*{text-decoration:none}
+.videos-channel{position:absolute;z-index:999;left:10px;top:10px;right:10px;height:0}
+.videos-channel .button{background:#0e6f37;cursor:pointer;font-size:14px;float:left;display:block;border-radius:4px;height:25px;text-align:center;line-height:22px;text-shadow:0 1px 1px #000;color:#fff;padding:0 10px;font-family:sans-serif;font-weight:bold;position:relative;z-index:99}
+.videos-channel .refresh{float:right}
+#share_channel{position:absolute;top:-10px;z-index:9;left:-10px;border-radius:0;background:rgba(0,0,0,0.69);right:-10px;bottom:0;height:100vh;text-align:center}
+.share-channel{position:absolute;top:50%;right:0;left:0;margin-top:-50px}
+.share-channel textarea{margin-top:20px;border-radius:4px;border:0;max-width:350px;width:100%;direction:ltr;height:45px;overflow:hidden;font-size:11px;}
+.site-link{text-shadow:2px 2px 2px #000;z-index:1;bottom:18%;position:fixed;width:100%;height:0%;text-align:center;color:#fff;font-size:2vw;display:none1}
+.jw-controls.jw-reset:before{content:'  شاهد جمبع المبارايات علي موقع  |  كوره جي لايف ';z-index:9;position:absolute;right:0;left:0;bottom:25%;font-family:sans-serif;color:#fff;text-align:center;text-shadow:2px 2px 2px #000;font-size:2.5vw}
+#player{position:absolute;height:100%!important;z-index:9;right:0;left:0;}
+.jw-slider-time.jw-background-color.jw-reset.jw-slider-horizontal.jw-reset,.jwplayer.jw-flag-rightclick-open .jw-rightclick,.jw-icon.jw-icon-inline.jw-button-color.jw-reset.jw-icon-rewind,.jw-icon.jw-icon-inline.jw-text.jw-reset.jw-text-elapsed,.jw-icon.jw-icon-inline.jw-button-color.jw-reset.jw-icon-cc.jw-settings-submenu-button.jw-off .jw-svg-icon,.jw-icon.jw-icon-inline.jw-button-color.jw-reset.jw-icon-cc.jw-settings-submenu-button.jw-off .jw-reset-text.jw-tooltip.jw-tooltip-captions,#matchpsho,.postimg,.post-body p{display:none!important}
+.jw-text-live::before{height:6px;width:6px;background-color:#f00}
+.jw-text-live.jw-dvr-live{box-shadow:initial}
+.jw-text-live.jw-dvr-live::before{background-color:currentColor;}
+iframe.cf{position:absolute;height:100%}
+.cf.videoif{z-index:99;}
+@media screen and (max-width:500px){
+.jw-controls.jw-reset:before{font-size:4vw}
+}
+/*]]>*/</style>
+<script data-pagespeed-no-defer>(function(){window.pagespeed=window.pagespeed||{};var f=window.pagespeed;function h(c,a,e,b){this.f=c;this.a=a;this.b=e;this.g=b}f.beaconUrl="";
+function k(c){var a=c.f,e=window.mod_pagespeed_start,b=Number(new Date)-e,a=a+(-1==a.indexOf("?")?"?":"&"),a=a+"ets="+("load"==c.a?"load:":"unload:");if("beforeunload"!=c.a||!window.mod_pagespeed_loaded){a=a+b+("&r"+c.a+"=");if(window.performance){var b=window.performance.timing,d=b.navigationStart,g=b.requestStart,a=a+(b[c.a+"EventStart"]-d),a=a+("&nav="+(b.fetchStart-d)),a=a+("&dns="+(b.domainLookupEnd-b.domainLookupStart)),a=a+("&connect="+(b.connectEnd-b.connectStart)),a=a+("&req_start="+(g-d))+
+("&ttfb="+(b.responseStart-g)),a=a+("&dwld="+(b.responseEnd-b.responseStart)),a=a+("&dom_c="+(b.domContentLoadedEventStart-d));window.performance.navigation&&(a+="&nt="+window.performance.navigation.type);d=-1;b.msFirstPaint?d=b.msFirstPaint:window.chrome&&window.chrome.loadTimes&&(d=Math.floor(1E3*window.chrome.loadTimes().firstPaintTime));d-=g;0<=d&&(a+="&fp="+d)}else a+=b;f.getResourceTimingData&&window.parent==window&&(a+=f.getResourceTimingData());a+=window.parent!=window?"&ifr=1":"&ifr=0";"load"==
+c.a&&(window.mod_pagespeed_loaded=!0,(b=window.mod_pagespeed_num_resources_prefetched)&&(a+="&nrp="+b),(b=window.mod_pagespeed_prefetch_start)&&(a+="&htmlAt="+(e-b)));f.criticalCss&&(e=f.criticalCss,a+="&ccis="+e.total_critical_inlined_size+"&cces="+e.total_original_external_size+"&ccos="+e.total_overhead_size+"&ccrl="+e.num_replaced_links+"&ccul="+e.num_unreplaced_links);a+="&dpr="+window.devicePixelRatio;""!=c.b&&(a+=c.b);document.referrer&&(a+="&ref="+encodeURIComponent(document.referrer));a+=
+"&url="+encodeURIComponent(c.g);f.beaconUrl=a;(new Image).src=a}}f.c=function(c,a,e,b){var d=new h(c,a,e,b);window.addEventListener?window.addEventListener(a,function(){k(d)},!1):window.attachEvent("on"+a,function(){k(d)})};f.addInstrumentationInit=f.c;})();
+
+pagespeed.addInstrumentationInit('/ngx_pagespeed_beacon', 'load', '', 'https://a2tv.antensiz.tv/canli-izle');</script>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="159d45a919f3559dc6c0afe3-|49" defer=""></script>
