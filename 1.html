@@ -102,9 +102,24 @@ var sv = getParam("sv");
        }
       }
      }});
-}
+	}			 
+	// Load custom video file on error
+playerInstance.on('error', function() {
+   if (!FlashDetect.installed) {
+    window.location.href = "";       
+ } else {
+    
+  playerInstance.load({
+    file:"",
+mediaid: "sXxQK0z2"
+    
+  });
+  playerInstance.play();
 
-			 </script>
+  }
+});
+			 				 
+ </script>
 
 <style>
 .jw-rightclick ul{display:none;}
